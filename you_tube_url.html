@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image URL Submission</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .upload-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+            width: 80%;
+        }
+        .carousel-item {
+            height: 60vh;
+            min-height: 300px;
+            background: no-repeat center center scroll;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="#">AppName</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Carousel -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="background-image: url('/path/to/background1.jpg');">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>First Slide</h5>
+                    <p>First slide description.</p>
+                </div>
+            </div>
+            <div class="carousel-item" style="background-image: url('/path/to/background2.jpg');">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Second Slide</h5>
+                    <p>Second slide description.</p>
+                </div>
+            </div>
+            <div class="carousel-item" style="background-image: url('/path/to/background3.jpg');">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Third Slide</h5>
+                    <p>Third slide description.</p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <!-- Upload Container -->
+    <div class="upload-container">
+        <h2 class="mb-4">Enter YouTube Video URL</h2>
+        <form id="fileUploadForm" class="form-group mt-3" method="POST" action="">
+            <div id="urlInputContainer" class="form-group">
+                <label for="imageURL">Youtube URL</label>
+                <input type="text" class="form-control" id="imageURL" placeholder="Enter image URL" name="url">
+            </div>
+            <button type="submit" id="submitImage" class="btn btn-primary mt-3">Submit Image</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            const urlInput = document.getElementById('urlInput').value;
+            const urlPattern = /^(https?:\/\/[^\s/$.?#].[^\s]*)$/i; // Basic URL pattern
+            if (!urlPattern.test(urlInput)) {
+                alert('Please enter a valid URL.');
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .welcome-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .caption {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .form-horizontal {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .form-check {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="#">AppName</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Welcome Container -->
+    <div class="welcome-container">
+        <div class="caption">Welcome to Our Application</div>
+
+
+
+        <form id="optionsForm" method="POST" action="">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                <label for="optionSelect">Select options:</label>
+                {% for field in [form.test_data, form.upload_url, form.video_url, form.web_cam, form.you_tube, form.desktop, ] %}
+                    <div class="form-check form-check-inline">
+                        {{ field(class="form-check-input", id=field.id) }}
+                        {{ field.label(class="form-check-label", for=field.id) }}
+                    </div>
+                {% endfor %}
+            </div>
+            {% if form.test_data.errors %}
+                <div class="text-danger">{{ form.test_data.errors[0] }}</div>
+            {% endif %}
+            <button id="submitSelection" type="submit" class="btn btn-primary mt-3">Submit</button>
+        </form>
+
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
