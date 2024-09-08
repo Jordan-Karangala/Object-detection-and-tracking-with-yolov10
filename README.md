@@ -2,6 +2,11 @@
 # YoloV_tracking_Botmot
 This project is mainly to locate and track specific class from youtube videos, images, live stream etc.
 
+<picture>
+ <source media="(prefers-color-scheme: dark)" srcset="YOUR-DARKMODE-IMAGE">
+ <source media="(prefers-color-scheme: light)" srcset="YOUR-LIGHTMODE-IMAGE">
+ <img alt="YOUR-ALT-TEXT" src="YOUR-DEFAULT-IMAGE">
+</picture>
 
 
 open terminal and cd to project folder
